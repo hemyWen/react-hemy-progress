@@ -1,26 +1,27 @@
 //圆环
-import Base from './Base'
+import Base from './Base';
 class Circle extends Base {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       type: 'circle',
-      maskID: 'progress_circle_mask'
-    }
+      maskID: 'progress_circle_mask',
+    };
   }
   get centerPoint() {
-    const x = this.props.width / 2
-    const y = x
-    return { x, y }
+    const x = this.props.width / 2;
+    const y = x;
+    return { x, y };
   }
   //环形周长
   get perimeter() {
-    return 2 * Math.PI * this.props.radius
+    return 2 * Math.PI * this.props.radius;
   }
   render() {
-    const { width, isDashed, radius, showText } = this.props
+    const { width, isDashed, radius, showText, slot } = this.props;
+    const isShowText = showText && !slot;
     return (
-      <div className="progress-circle">
+      <div className="svg-container" style={{ width: width + 'px', height: width + 'px' }}>
         <svg width={width} height={width}>
           {isDashed && (
             <mask id={this.state.maskID}>
@@ -40,19 +41,18 @@ class Circle extends Base {
               cx={this.centerPoint.x}
               cy={this.centerPoint.y}
               r={radius}
-              fill="none"
               style={this.backgroundStyle}
             />
             <circle
               className="progress-circle__item"
               cx={this.centerPoint.x}
               cy={this.centerPoint.y}
+              fill="none"
               r={radius}
               style={this.style}
             />
-            {showText && (
+            {isShowText && (
               <text
-                className="progress-circle-text"
                 x={this.centerPoint.x}
                 y={this.centerPoint.y}
                 textAnchor="middle"
@@ -64,9 +64,10 @@ class Circle extends Base {
             )}
           </g>
         </svg>
+        <div className="slot-container">{slot}</div>
       </div>
-    )
+    );
   }
 }
 
-export default Circle
+export default Circle;

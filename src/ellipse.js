@@ -1,29 +1,30 @@
-import Base from './Base'
+import Base from './Base';
 class Ellipse extends Base {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       type: 'ellipse',
-      maskID: 'progress_ellipse_mask'
-    }
+      maskID: 'progress_ellipse_mask',
+    };
   }
   get centerPoint() {
-    const x = this.props.width / 2
-    const y = this.props.height / 2
-    return { x, y }
+    const x = this.props.width / 2;
+    const y = this.props.height / 2;
+    return { x, y };
   }
   //椭圆周长 L=2πb+4(a-b)
   get perimeter() {
-    const x = this.props.rx
-    const y = this.props.ry
-    const d = x >= y ? y : x
-    const L = 2 * Math.PI * d + 4 * Math.abs(x - y)
-    return L
+    const x = this.props.rx;
+    const y = this.props.ry;
+    const d = x >= y ? y : x;
+    const L = 2 * Math.PI * d + 4 * Math.abs(x - y);
+    return L;
   }
   render() {
-    const { width, height, isDashed, rx, ry, showText } = this.props
+    const { width, height, isDashed, rx, ry, showText, slot } = this.props;
+    const isShowText = showText && !slot;
     return (
-      <div className="progress-ellipse">
+      <div className="svg-container" style={{ width: width + 'px', height: height + 'px' }}>
         <svg width={width} height={height}>
           {isDashed && (
             <mask id={this.state.maskID}>
@@ -47,7 +48,6 @@ class Ellipse extends Base {
               cy={this.centerPoint.y}
               rx={rx}
               ry={ry}
-              fill="none"
               style={this.backgroundStyle}
             />
             <ellipse
@@ -57,11 +57,11 @@ class Ellipse extends Base {
               cy={this.centerPoint.y}
               rx={rx}
               ry={ry}
+              fill="none"
               style={this.style}
             />
-            {showText && (
+            {isShowText && (
               <text
-                className="progress-circle-text"
                 x={this.centerPoint.x}
                 y={this.centerPoint.y}
                 textAnchor="middle"
@@ -73,9 +73,10 @@ class Ellipse extends Base {
             )}
           </g>
         </svg>
+        <div className="slot-container">{slot}</div>
       </div>
-    )
+    );
   }
 }
 
-export default Ellipse
+export default Ellipse;

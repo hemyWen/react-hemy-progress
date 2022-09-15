@@ -3,8 +3,6 @@
 }
 .progress-bar-outer {
   width: 100%;
-  height: 30px;
-  border-radius: 100px;
   overflow: hidden;
   position: relative;
   vertical-align: middle;
@@ -16,7 +14,6 @@
   top: 0;
   height: 100%;
   text-align: right;
-  border-radius: 100px;
   line-height: 1;
   white-space: nowrap;
 }
@@ -54,7 +51,7 @@
   height: 100%;
   overflow: hidden;
 }
-.progress-bar-inner-dashed .item {
+.progress-bar-inner-dashed .dash-item {
   flex: 0 0 auto;
   height: 100%;
 }
@@ -68,4 +65,13 @@
   transform: rotate(-90deg);
   transform-origin: center;
   transform-box: fill-box;
+}
+.svg-container {
+  position: relative;
+}
+.slot-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
