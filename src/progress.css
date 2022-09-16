@@ -14,7 +14,7 @@
   top: 0;
   height: 100%;
   text-align: right;
-  line-height: 1;
+  line-height: 0;
   white-space: nowrap;
 }
 
@@ -69,7 +69,7 @@
 .svg-container {
   position: relative;
 }
-.slot-container {
+.svg-container .slot-container {
   position: absolute;
   left: 50%;
   top: 50%;

@@ -13,7 +13,6 @@ class Line extends Base {
       const width = this.progressBar.current.clientWidth;
       const length = Number(this.props.dashedLength) + Number(this.props.dashedDistance);
       this.setState({ count: Math.ceil(width / length) + 1 });
-      this.state.count = console.log('count===', this.state.count);
     }
   }
   get dashItemStyle() {
