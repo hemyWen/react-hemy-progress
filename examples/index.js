@@ -78,6 +78,9 @@ const App = () => (
           slot={slot}
         />
       </div>
+      <div className="item">
+        <Progress type="line" percentage={50} isDashed={true} />
+      </div>
     </div>
   </div>
 );

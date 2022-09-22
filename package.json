@@ -10,7 +10,7 @@
     "react"
   ],
   "scripts": {
-    "dev": "webpack-dev-server --config config/webpack.config.dev.js",
+    "dev": "webpack-dev-server --config config/webpack.config.dev.js --open",
     "build": "webpack --config config/webpack.config.prod.js",
     "pub": "npm run build && npm publish"
   },

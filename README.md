@@ -1,2 +1,3 @@
-## [hemy-progress](https://github.com/hemyWen/hemy-progress) for React
- - [github](https://github.com/hemyWen/react-hemy-progress)
+基于svg制作的react进度条,支持线条,环形,椭圆,矩形等其他自定义图形
+
+[请移步这里](https://github.com/hemyWen/hemy-progress)
